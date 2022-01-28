@@ -89,7 +89,11 @@ resource "azurerm_backup_policy_vm" "example" {
   name                = "tfex-recovery-vault-policy"
   resource_group_name = azurerm_resource_group.main.name
   recovery_vault_name = azurerm_recovery_services_vault.example.name
-
+  
+  retention_daily {
+    count = 10
+  }
+   
   backup {
     frequency = "Daily"
     time      = "23:00"
